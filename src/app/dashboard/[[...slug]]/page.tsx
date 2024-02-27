@@ -3,8 +3,7 @@
 import { routeTree } from "@/route-tree.gen";
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 
-// export const dynamic = "force-dynamic";
-export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 const router = createRouter({
 	basepath: "/dashboard",
