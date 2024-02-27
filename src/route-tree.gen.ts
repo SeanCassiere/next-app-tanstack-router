@@ -11,19 +11,31 @@
 // Import Routes
 
 import { Route as rootRoute } from "./routes/__root"
-import { Route as SettingsImport } from "./routes/settings"
+import { Route as InvoicesRouteImport } from "./routes/invoices.route"
 import { Route as IndexImport } from "./routes/index"
+import { Route as InvoicesIndexImport } from "./routes/invoices.index"
+import { Route as InvoicesInvoiceIdImport } from "./routes/invoices.$invoiceId"
 
 // Create/Update Routes
 
-const SettingsRoute = SettingsImport.update({
-  path: "/settings",
+const InvoicesRouteRoute = InvoicesRouteImport.update({
+  path: "/invoices",
   getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
   path: "/",
   getParentRoute: () => rootRoute,
+} as any)
+
+const InvoicesIndexRoute = InvoicesIndexImport.update({
+  path: "/",
+  getParentRoute: () => InvoicesRouteRoute,
+} as any)
+
+const InvoicesInvoiceIdRoute = InvoicesInvoiceIdImport.update({
+  path: "/$invoiceId",
+  getParentRoute: () => InvoicesRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -34,15 +46,26 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    "/settings": {
-      preLoaderRoute: typeof SettingsImport
+    "/invoices": {
+      preLoaderRoute: typeof InvoicesRouteImport
       parentRoute: typeof rootRoute
+    }
+    "/invoices/$invoiceId": {
+      preLoaderRoute: typeof InvoicesInvoiceIdImport
+      parentRoute: typeof InvoicesRouteImport
+    }
+    "/invoices/": {
+      preLoaderRoute: typeof InvoicesIndexImport
+      parentRoute: typeof InvoicesRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute, SettingsRoute])
+export const routeTree = rootRoute.addChildren([
+  IndexRoute,
+  InvoicesRouteRoute.addChildren([InvoicesInvoiceIdRoute, InvoicesIndexRoute]),
+])
 
 /* prettier-ignore-end */
