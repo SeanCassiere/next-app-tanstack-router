@@ -10,7 +10,9 @@ const router = createRouter({
 	routeTree,
 	defaultPreload: "intent",
 	defaultPendingComponent: () => (
-		<div className='px-4'>Tanstack Router Loading...</div>
+		<div className='px-4 flex items-center justify-center'>
+			Tanstack Router Loading...
+		</div>
 	),
 });
 
