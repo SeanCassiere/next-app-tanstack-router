@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	trailingSlash: true,
 	experimental: {
 		typedRoutes: true,
 	},
+	productionBrowserSourceMaps: true,
 };
 
 export default nextConfig;
