@@ -1,5 +1,5 @@
 "use client";
 
 export function InvoicesIndex() {
-	return <div>Hello /invoices/!</div>;
+	return <div className='mb-4'>◀️ select an invoice</div>;
 }

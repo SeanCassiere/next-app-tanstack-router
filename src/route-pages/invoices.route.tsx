@@ -9,14 +9,13 @@ export function InvoicesRoute() {
 
 	return (
 		<div className='px-4 pt-4 grid gap-4 grid-cols-1 lg:grid-cols-4 h-full'>
-			<div className='min-h-full lg:border-r border-b lg:border-b-0'>
+			<div className='min-h-full lg:border-r border-b lg:border-b-0 pr-4 pb-4'>
 				<nav>
 					<ul className='flex flex-col gap-2'>
 						<li>
 							<Link
 								to='/invoices/$invoiceId'
 								params={{ invoiceId: "non-existent-invoice" }}
-								className='text-blue-500'
 								activeProps={{ className: "underline underline-offset-4" }}
 							>
 								Non existent invoice
@@ -27,7 +26,7 @@ export function InvoicesRoute() {
 								<Link
 									to='/invoices/$invoiceId'
 									params={{ invoiceId: invoice.id }}
-									className='text-blue-500 truncate max-w-full inline-block'
+									className='truncate max-w-full inline-block'
 									activeProps={{ className: "underline underline-offset-4" }}
 								>
 									{invoice.title}
