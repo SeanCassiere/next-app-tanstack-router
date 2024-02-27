@@ -19,7 +19,7 @@ export default function Home() {
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						🏁 Github
+						🧵 Github
 					</a>
 				</div>
 			</div>
